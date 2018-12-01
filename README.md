@@ -21,6 +21,8 @@ Don't know what to expect? Check out the previous years: [2017](https://adventof
 
 To improve knowledge sharing and experimentation, please document how to build and run your code. It can also be nice to keep a log here:
 
-##### _30/11_
+##### _1/12_
 
-_Today I forked this repository in preparation of the start._
+Today I forked this repository to start off Advent of Code.
+
+The TV is playing the DreamHack Quake Champions 2v2 tournament, and I'm ready for the Day 1's puzzles.
