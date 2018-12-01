@@ -16,32 +16,82 @@ testInput =
 
 suite : Test
 suite =
-    describe "Puzzle 1"
-        [ describe "can read input lines"
-            [ test "testinput" <|
-                \_ ->
-                    testInput
-                        |> scanLines
-                        |> Expect.equal
-                            [ 1338, -1 ]
+    describe "Day 1"
+        [ describe "Puzzle 1"
+            [ describe "can read input lines"
+                [ test "testinput" <|
+                    \_ ->
+                        testInput
+                            |> scanLines
+                            |> Expect.equal
+                                [ 1338, -1 ]
+                ]
+            , describe "can sum lines"
+                [ test "testinput" <|
+                    \_ ->
+                        testInput
+                            |> scanLines
+                            |> solve1
+                            |> Expect.equal
+                                1337
+                , test "puzzle input" <|
+                    \_ ->
+                        puzzleInput
+                            |> scanLines
+                            |> solve1
+                            |> Expect.equal
+                                531
+                ]
             ]
-        , describe "can sum lines"
-            [ test "testinput" <|
-                \_ ->
-                    testInput
-                        |> scanLines
-                        |> solve1
-                        |> Expect.equal
-                            1337
-            , test "puzzle input" <|
-                \_ ->
-                    puzzleInput
-                        |> scanLines
-                        |> solve1
-                        |> Expect.equal
-                            531
+        , describe "Puzzle 2"
+            [ skip <|
+                describe "keep intermediary"
+                    [ test "testinput2" <|
+                        \_ ->
+                            testInput2
+                                |> scanLines
+                                |> keepIntermediaryResults []
+                                |> Expect.equal
+                                    [ 4, 8, 10, 6, 3 ]
+                    ]
+            , skip <|
+                describe "loops input lines"
+                    [ test "testinput2" <|
+                        \_ ->
+                            testInput2
+                                |> scanLines
+                                |> Expect.equal
+                                    [ 3, 3, 4, -2, -4 ]
+                    ]
+            , describe "can identify first duplicate frequency"
+                [ skip <|
+                    test "testinput2" <|
+                        \_ ->
+                            testInput2
+                                |> scanLines
+                                |> solve2
+                                |> Expect.equal
+                                    10
+                , test "puzzle input" <|
+                    \_ ->
+                        puzzleInput
+                            |> scanLines
+                            |> solve2
+                            |> Expect.equal
+                                531
+                ]
             ]
         ]
+
+
+testInput2 =
+    """
++3
++3
++4
+-2
+-4
+"""
 
 
 puzzleInput =
