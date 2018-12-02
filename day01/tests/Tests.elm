@@ -64,14 +64,13 @@ suite =
                                     [ 3, 3, 4, -2, -4 ]
                     ]
             , describe "can identify first duplicate frequency"
-                [ skip <|
-                    test "testinput2" <|
-                        \_ ->
-                            testInput2
-                                |> scanLines
-                                |> solve2
-                                |> Expect.equal
-                                    10
+                [ test "testinput2" <|
+                    \_ ->
+                        testInput2
+                            |> scanLines
+                            |> solve2
+                            |> Expect.equal
+                                10
                 , test "puzzle input" <|
                     \_ ->
                         puzzleInput

@@ -2,6 +2,7 @@ module Main exposing (intParser, keepIntermediaryResults, scanLine, scanLines, s
 
 import List.Extra exposing (..)
 import Parser exposing ((|.), (|=), Parser, end, int, lazy, map, oneOf, run, succeed, symbol)
+import Set exposing (..)
 
 
 type alias Frequencies =
@@ -23,19 +24,24 @@ solve1 f =
 solve2 : Frequencies -> Int
 solve2 f =
     let
-        loop acc =
-            let
-                intermediaryResults =
-                    Debug.log "intermediary" <| keepIntermediaryResults acc f
-            in
-            if List.Extra.allDifferent intermediaryResults then
-                loop intermediaryResults
+        loop : Int -> Set IntermediaryResult -> Frequencies -> Int
+        loop currentFreq intermediaryResults frequencies =
+            case frequencies of
+                [] ->
+                    loop currentFreq intermediaryResults f
 
-            else
-                intermediaryResults
-                    |> findDuplicate
+                h :: t ->
+                    let
+                        newFreq =
+                            currentFreq + h
+                    in
+                    if Set.member newFreq intermediaryResults then
+                        newFreq
+
+                    else
+                        loop newFreq (Set.insert newFreq intermediaryResults) t
     in
-    loop []
+    loop 0 Set.empty f
 
 
 findDuplicate : List IntermediaryResult -> IntermediaryResult
