@@ -1,4 +1,4 @@
-module Main exposing (intParser, keepIntermediaryResults, scanLine, scanLines, solve1, solve2)
+module Day1 exposing (intParser, keepIntermediaryResults, scanLine, scanLines, solve1, solve2)
 
 import List.Extra exposing (..)
 import Parser exposing ((|.), (|=), Parser, end, int, lazy, map, oneOf, run, succeed, symbol)

@@ -2,8 +2,8 @@ module Tests exposing (suite)
 
 -- import Fuzz exposing (Fuzzer, int, list, string)
 
+import Day1 exposing (..)
 import Expect exposing (Expectation)
-import Main exposing (..)
 import Test exposing (..)
 
 
