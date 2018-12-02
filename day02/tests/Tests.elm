@@ -17,58 +17,72 @@ suite =
                         "abcdef"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 0) (Trips 0))
+                                (Model 0 0)
                 , test "1 dupe" <|
                     \_ ->
                         "abbcde"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 1) (Trips 0))
+                                (Model 1 0)
                 , test "2 dupes" <|
                     \_ ->
                         "aabcdd"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 1) (Trips 0))
+                                (Model 1 0)
                 , test "no trips" <|
                     \_ ->
                         "abcdef"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 0) (Trips 0))
+                                (Model 0 0)
                 , test "1 trip" <|
                     \_ ->
                         "abcccd"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 0) (Trips 1))
+                                (Model 0 1)
                 , test "2 trips" <|
                     \_ ->
                         "ababab"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 0) (Trips 1))
+                                (Model 0 1)
                 , test "1 trip, 1 dupe" <|
                     \_ ->
                         "bababc"
                             |> check
                             |> Expect.equal
-                                (Model (Dupes 1) (Trips 1))
+                                (Model 1 1)
                 ]
             , describe "can do stuff"
                 [ test "testinput" <|
                     \_ ->
-                        True
+                        testInput
+                            |> solve1
                             |> Expect.equal
-                                True
+                                12
                 , test "puzzle input" <|
                     \_ ->
-                        True
+                        puzzleInput
+                            |> solve1
                             |> Expect.equal
-                                True
+                                7533
                 ]
             ]
         ]
+
+
+testInput =
+    """
+abcdef
+bababc
+abbcde
+abcccd
+aabcdd
+abcdee
+ababab
+"""
 
 
 puzzleInput =
