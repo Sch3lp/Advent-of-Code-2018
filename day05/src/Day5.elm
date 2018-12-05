@@ -11,18 +11,21 @@ type alias Unit =
 solve1 : String -> String
 solve1 input =
     let
-        loop units =
+        loop counter units =
             let
+                updatedCounter =
+                    Debug.log "loop" <| (counter + 1)
+
                 result =
-                    triggerUnits units
+                    triggerUnits <| units
             in
             if units == result then
                 units
 
             else
-                loop result
+                loop updatedCounter result
     in
-    toUnits input |> loop |> asString
+    toUnits input |> loop 1 |> asString
 
 
 triggerUnits : List Unit -> List Unit
