@@ -1,4 +1,4 @@
-module Day5 exposing (Unit, UnitPair, asString, scanLines, solve1, solve2, toUnits, triggerUnit, triggerUnits)
+module Day5 exposing (Unit, asString, sameType, scanLines, solve1, solve2, toUnits, triggerUnits)
 
 import List.Extra exposing (..)
 import Set exposing (..)
@@ -6,10 +6,6 @@ import Set exposing (..)
 
 type alias Unit =
     String
-
-
-type alias UnitPair =
-    ( Unit, Unit )
 
 
 solve1 : String -> String
@@ -27,22 +23,6 @@ solve1 input =
                 loop result
     in
     toUnits input |> loop |> asString
-
-
-triggerUnit : UnitPair -> Maybe UnitPair
-triggerUnit ( unit1, unit2 ) =
-    let
-        lower1 =
-            String.toLower unit1
-
-        lower2 =
-            String.toLower unit2
-    in
-    if lower1 == lower2 then
-        Nothing
-
-    else
-        Just ( unit1, unit2 )
 
 
 triggerUnits : List Unit -> List Unit

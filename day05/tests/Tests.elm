@@ -24,32 +24,6 @@ suite =
                             |> Expect.equal
                                 "0"
                 ]
-            , describe "triggerUnit"
-                [ test "Aa -> Nothing" <|
-                    \_ ->
-                        ( "A", "a" )
-                            |> triggerUnit
-                            |> Expect.equal
-                                Nothing
-                , test "aA -> Nothing" <|
-                    \_ ->
-                        ( "a", "A" )
-                            |> triggerUnit
-                            |> Expect.equal
-                                Nothing
-                , test "aB -> aB" <|
-                    \_ ->
-                        ( "a", "B" )
-                            |> triggerUnit
-                            |> Expect.equal
-                                (Just ( "a", "B" ))
-                , test "Ab -> Ab" <|
-                    \_ ->
-                        ( "A", "b" )
-                            |> triggerUnit
-                            |> Expect.equal
-                                (Just ( "A", "b" ))
-                ]
             , describe "triggerUnits"
                 [ test "dabAcCaCBAcCcaDA" <|
                     \_ ->
