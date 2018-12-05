@@ -55,7 +55,7 @@ suite =
                             |> Expect.equal
                                 (Model 1 1)
                 ]
-            , describe "can do stuff"
+            , describe "solve1"
                 [ test "testinput" <|
                     \_ ->
                         testInput
@@ -70,6 +70,22 @@ suite =
                                 7533
                 ]
             ]
+        , describe "Puzzle 2"
+            [ describe "solve2"
+                [ test "testinput" <|
+                    \_ ->
+                        testInput2
+                            |> solve2
+                            |> Expect.equal
+                                0
+                , test "puzzle input" <|
+                    \_ ->
+                        puzzleInput
+                            |> solve2
+                            |> Expect.equal
+                                0
+                ]
+            ]
         ]
 
 
@@ -82,6 +98,18 @@ abcccd
 aabcdd
 abcdee
 ababab
+"""
+
+
+testInput2 =
+    """
+abcde
+fghij
+klmno
+pqrst
+fguij
+axcye
+wvxyz
 """
 
 

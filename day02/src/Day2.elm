@@ -19,9 +19,13 @@ solve1 input =
     summedModel.dupes * summedModel.trips
 
 
-solve2 : Int -> Int
+solve2 : String -> Int
 solve2 i =
-    i
+    0
+
+
+
+-- Day1
 
 
 countCombos : Model -> Model -> Model
