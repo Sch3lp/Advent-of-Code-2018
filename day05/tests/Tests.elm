@@ -2,15 +2,14 @@ module Tests exposing (suite)
 
 -- import Fuzz exposing (Fuzzer, int, list, string)
 
+import Day5 exposing (..)
 import Expect exposing (Expectation)
-import Main exposing (..)
+import PuzzleInput exposing (puzzleInput)
 import Test exposing (..)
 
 
 testInput =
-    """
-0
-"""
+    "0"
 
 
 suite : Test
@@ -23,14 +22,33 @@ suite =
                         testInput
                             |> scanLines
                             |> Expect.equal
-                                [ 0 ]
+                                "0"
                 ]
-            , describe "can do stuff"
-                [ test "testinput" <|
+            , describe "triggerUnit"
+                [ test "Aa -> Nothing" <|
                     \_ ->
-                        True
+                        ( "A", "a" )
+                            |> triggerUnit
                             |> Expect.equal
-                                True
+                                Nothing
+                , test "aA -> Nothing" <|
+                    \_ ->
+                        ( "a", "A" )
+                            |> triggerUnit
+                            |> Expect.equal
+                                Nothing
+                , test "aB -> aB" <|
+                    \_ ->
+                        ( "a", "B" )
+                            |> triggerUnit
+                            |> Expect.equal
+                                (Just ( "a", "B" ))
+                , test "Ab -> Ab" <|
+                    \_ ->
+                        ( "A", "b" )
+                            |> triggerUnit
+                            |> Expect.equal
+                                (Just ( "A", "b" ))
                 , test "puzzle input" <|
                     \_ ->
                         True
@@ -39,9 +57,3 @@ suite =
                 ]
             ]
         ]
-
-
-puzzleInput =
-    """
-0
-"""
