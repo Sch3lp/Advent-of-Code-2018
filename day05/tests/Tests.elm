@@ -49,11 +49,51 @@ suite =
                             |> triggerUnit
                             |> Expect.equal
                                 (Just ( "A", "b" ))
-                , test "puzzle input" <|
+                ]
+            , describe "triggerUnits"
+                [ test "dabAcCaCBAcCcaDA" <|
                     \_ ->
-                        True
+                        "dabAcCaCBAcCcaDA"
+                            |> triggerUnitsInTests
                             |> Expect.equal
-                                True
+                                "dabAaCBAcCcaDA"
+                , test "dabAaCBAcCcaDA" <|
+                    \_ ->
+                        "dabAaCBAcCcaDA"
+                            |> triggerUnitsInTests
+                            |> Expect.equal
+                                "dabCBAcCcaDA"
+                , test "dabCBAcCcaDA" <|
+                    \_ ->
+                        "dabCBAcCcaDA"
+                            |> triggerUnitsInTests
+                            |> Expect.equal
+                                "dabCBAcaDA"
+                , test "dabCBAcaDA" <|
+                    \_ ->
+                        "dabCBAcaDA"
+                            |> triggerUnitsInTests
+                            |> Expect.equal
+                                "dabCBAcaDA"
+                ]
+            , describe "solve1"
+                [ test "testinput: dabAcCaCBAcCcaDA" <|
+                    \_ ->
+                        "dabAcCaCBAcCcaDA"
+                            |> solve1
+                            |> Expect.equal
+                                "dabCBAcaDA"
+                , test "puzzleInput" <|
+                    \_ ->
+                        puzzleInput
+                            |> solve1
+                            |> String.length
+                            |> Expect.equal
+                                4
                 ]
             ]
         ]
+
+
+triggerUnitsInTests =
+    toUnits >> triggerUnits >> asString
